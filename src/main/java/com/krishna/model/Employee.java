@@ -21,14 +21,17 @@ public class Employee implements Serializable {
 	private String name;
 
 	@Column
-	private String email;
-
-	@Column
 	private String address;
 
 	@Column
-	private String telephone;
+	private String contact;
 
+	@Column
+	private String age;
+
+	@Column
+	private String yearJoined;
+	
 	public int getId() {
 		return id;
 	}
@@ -45,28 +48,38 @@ public class Employee implements Serializable {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public void setYearJoined(String yearJoined) {
+		this.yearJoined = yearJoined;
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public String getContact() {
+		return contact;
 	}
 
-	public String getTelephone() {
-		return telephone;
+	public String getAge() {
+		return age;
 	}
 
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public String getYearJoined() {
+		return yearJoined;
 	}
+
+	
 
 }

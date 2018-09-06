@@ -19,16 +19,20 @@
                 <td><form:input path="name" /></td>
             </tr>
             <tr>
-                <td>Email:</td>
-                <td><form:input path="email" /></td>
-            </tr>
-            <tr>
                 <td>Address:</td>
                 <td><form:input path="address" /></td>
             </tr>
             <tr>
-                <td>Telephone:</td>
-                <td><form:input path="telephone" /></td>
+                <td>Contact:</td>
+                <td><form:input path="contact" /></td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><form:input path="age" /></td>
+            </tr>
+            <tr>
+                <td># of Years in the Company:</td>
+                <td><form:input path="yearJoined" /></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="Save"></td>

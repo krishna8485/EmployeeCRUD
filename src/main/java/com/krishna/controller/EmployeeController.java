@@ -7,13 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.krishna.model.Employee;
 import com.krishna.service.EmployeeService;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 public class EmployeeController {
@@ -28,17 +34,14 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 
+	
 	@RequestMapping(value = "/")
 	public ModelAndView listEmployee(ModelAndView model) throws IOException {
-		System.out.println("1");
 		List<Employee> listEmployee = employeeService.getAllEmployees();
-		System.out.println("2");
 		model.addObject("listEmployee", listEmployee);
-		System.out.println(listEmployee.toString());
-		model.setViewName("home");
-		System.out.println("2");
+		model.setViewName("employeeList");
 		return model;
-	}
+	}	
 
 	@RequestMapping(value = "/newEmployee", method = RequestMethod.GET)
 	public ModelAndView newContact(ModelAndView model) {
@@ -51,8 +54,7 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/saveEmployee", method = RequestMethod.POST)
 	public ModelAndView saveEmployee(@ModelAttribute Employee employee) {
-		if (employee.getId() == 0) { // if employee id is 0 then creating the
-			// employee other updating the employee
+		if (employee.getId() == 0) { 
 			employeeService.addEmployee(employee);
 		} else {
 			employeeService.updateEmployee(employee);
